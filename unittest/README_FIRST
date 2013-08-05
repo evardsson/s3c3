@@ -1,0 +1,12 @@
+IMPORTANT!!
+
+The tests must be run in a specific order to insure that dependencies are met!
+
+To make this work you should make use of the qbunit.xml configuration file.
+
+call:
+
+../composer/vendors/bin/phpunit --configuration s3c3unit.xml
+
+This also means that in order to add new tests to the suite they must be added
+to the s3c3unit.xml file somewhere after the SetupTest.php.

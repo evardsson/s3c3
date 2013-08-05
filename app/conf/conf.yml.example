@@ -1,0 +1,85 @@
+env:
+    deployment: dev
+    config: file # or db
+    local_scheme_name: polo1
+    debug:
+        level: 5
+        token: s3c3_debug_token
+
+# database configuration for master (write) and slave (read) servers
+# driver: the php driver to use (see )
+# If you are not using a slave use the same settings as master
+# prefix - to prefix the tables this uses, as when mixing it into an
+# already existing db - a prefix of s3c3 will make tables like s3c3_contexts
+database:
+    prefix:
+    dbmaster:
+        driver:    mysqli
+        host:      127.0.0.1 
+        port:      3306
+        user:      s3c3
+        password:  somepssword
+        defaultdb: s3c3
+    dbslave:
+        driver:    mysqli
+        host:      127.0.0.1 
+        port:      3306
+        user:      s3c3
+        password:  somepssword
+        defaultdb: s3c3
+
+# Certificate settings
+# store: Where the certificates are stored
+# validate: Whether we validate them or not
+certificate:
+  store: /var/s3c3/certificates
+  validate: true
+
+# Where the local listener endpoint is - this is where the client connects
+# to get certs, etc
+s3c3_local_listener:
+    endpoint: http://localhost/s3c3/
+    internal_token: XqB6J0votAzse9s
+    version: 1
+
+# logging configuration
+# to skip email logging set from and to as 0 or false
+# the file directory must be an absolute path and must be writable by the web server
+logging:
+    file:
+        dir: /var/log/s3c3/
+    mail:
+        to: example@example.com
+        from: s3c3@evardsson.com
+    sms:
+        to: 3605551234@txt.att.net
+        from: s3c3@example.com
+
+
+# if you are using database configuration you MUST still set up everything above
+# token and scheme (below) will be overwritten by database settings
+# expire: expiry time for tokens, in seconds
+# length: string length for tokens
+# strength: weak, medium, strong, maximum
+#     weak uses    [0123456789abcdef] (only hexadecimal)
+#     medium uses  [0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz]
+#     strong uses  [#+-./0123456789=ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~]
+#     maximum uses [ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~]
+#     all printable ascii characters except the colon (: - chr(58)) (but will not start or end with the space)
+token:
+    expire: 90 
+    length: 64
+    strength: maximum
+    delete_on_load: 1
+
+# s3c3 scheme configuration
+# add servers/server pools here as name: urlendpoint
+# do NOT add each individual server in the pools here, we let the certificate class
+# grok that based on the pool names and the certificates on hand
+# clients - an array of allowed clients
+scheme:
+    listeners:
+        polo: http://polo.local/s3c3/
+        gold: http://gold.local/s3c3/
+        mac: http://mac.local/s3c3/
+    clients: [polo1, polo2, gold1, mac1]

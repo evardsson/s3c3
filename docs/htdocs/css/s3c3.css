@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/* CSS Document */
+html {
+	font-family:Helvetica, Arial, sans-serif;
+	font-size: 10pt;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+code, pre {
+	font-family: Consolas, Monaco, "Lucida Console", monospace;
+}
+header.pagehead {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 90px;
+}
+#logo {
+	width: 12%;
+	float: left;
+	padding-left: 1em;
+	text-align: left;
+}
+a, a:visited {
+    color: #7a9500;
+    text-decoration: none;
+}
+a:hover, a:active {
+    color: #652e90;
+    text-decoration: underline;
+}
+header.pagehead nav {
+	width: 80%;
+	padding-left: 1em;
+	margin-top: .5em;
+	float: left;
+}
+header.pagehead nav ul, header.pagehead nav ul li {
+	display: inline;
+	list-style-type: none;
+}
+#titleblock h1 {
+	margin: 0;
+	padding-top: 10px;
+	padding-left: 1em;
+	font-size: 26pt;
+	color: #652e90;
+}
+section {
+	padding-left: 1em;
+}
+section.last {
+	padding-bottom:80px;
+}
+footer.pagefoot {
+    position:fixed;
+    bottom:0;
+	width:100%;
+	height:50px;   /* Height of the footer */
+	background:#eee;
+	font-size: 10pt;
+	color: #666;
+}
+footer.pagefoot div {
+	padding-left: 2em;
+	padding-top: 15px;
+}
+ul li.top {
+	font-size: 11pt;
+	font-weight: bold;
+}
+ul li.top ul li {
+	font-size: 10pt;
+	font-weight: normal;
+}
+article {
+    margin-top: 2em;
+}
+article header, article header h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #8B4513;
+}
+article section h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #8B4513;
+}
+article section h4 {
+    font-size: 11pt;
+    font-weight: lighter;
+    color: #8B4513;
+}
+ul.explist li {
+    list-style-type: none;
+}
+dl {
+    width: 45em;
+}
+dt {
+    font-weight: bold;
+}

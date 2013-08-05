@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<phpunit>
+  <testsuites>
+    <testsuite name="S3C3_Tests">
+      <file>app/core/db/DatabaseTest.php</file>
+      <file>app/conf/ConfigTest.php</file>
+      <file>app/core/crypto/CertTest.php</file>
+      <file>app/core/crypto/CryptoTest.php</file>
+      <file>app/core/ModelTest.php</file>
+      <file>app/core/model/ConfigItemTest.php</file>
+      <file>app/core/model/ContextTest.php</file>
+      <!-- <file>app/ClassLoaderTest.php</file>
+      <file>app/ErrorHandlerTest.php</file>
+      <file>app/LoggerManagerTest.php</file>
+      <file>app/client/ClientTest.php</file>
+      <file>app/core/MessageTest.php</file>
+      <file>app/core/TokenTest.php</file>
+      <file>app/except/ApplicationExceptionTest.php</file>
+      <file>app/except/ClassNotFoundExceptionTest.php</file>
+      <file>app/except/ConfigurationExceptionTest.php</file>
+      <file>app/except/DatabaseExceptionTest.php</file>
+      <file>app/except/ErrorExceptionTest.php</file>
+      <file>app/except/ObjectNotFoundExceptionTest.php</file>
+      <file>app/except/PropertyNotFoundExceptionTest.php</file>
+      <file>app/except/RuntimeExceptionTest.php</file>
+      <file>app/listener/ListenerTest.php</file>
+      <file>app/util/http/RequestTest.php</file>
+      <file>app/util/http/ResponseTest.php</file>
+      <file>app/util/logger/LogFileHandlerTest.php</file>
+      <file>app/util/logger/LogMailHandlerTest.php</file>
+      <file>app/util/logger/LogMailSmsHandlerTest.php</file>
+      <file>bootstrap/bootstrapTest.php</file>
+      <file>bootstrap/CertHandlerTest.php</file>
+      <file>bootstrap/InjectorTest.php</file> -->
+    </testsuite>
+  </testsuites>
+</phpunit>

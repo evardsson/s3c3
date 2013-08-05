@@ -1,0 +1,491 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>S3C3 Documentation</title>
+    <link href="htdocs/css/s3c3.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="htdocs/js/shCore.js"></script>
+    <script type="text/javascript" src="htdocs/js/shBrushBash.js"></script>
+    <script type="text/javascript" src="htdocs/js/shBrushPhp.js"></script>
+    <script type="text/javascript" src="htdocs/js/shBrushYaml.js"></script>
+    <link type="text/css" rel="stylesheet" href="htdocs/js/shCoreDefault.css"/>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+</head>
+
+<body>
+<header class="pagehead">
+    <section id="logo"><img src="htdocs/images/s3c3.png" height="80" /></section>
+    <section id="titleblock"><h1>S3C3 Documentation</h1></section>
+    <nav>
+        <ul>
+            <li><a href="#installation">Installation</a> | </li>
+            <li><a href="#scheme">Scheme Basics</a> | </li>
+            <li><a href="#certificates">Certificates</a> | </li>
+            <li><a href="#administration">Administration</a> | </li>
+            <li><a href="phpdoc/index.html" target="_blank">PHPdoc Documentation</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="content" class="last">
+    <a name="toc"></a>
+    <ul id="toc">
+        <li class="top"><a href="#installation">Installation</a>
+            <ul>
+                <li><a href="#requirements">Requirements</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#bootstrap_install">Calling Bootstrap</a></li>
+            </ul>
+        </li>
+        <li class="top"><a href="#scheme">Scheme Basics</a>
+            <ul>
+                <li><a href="#schemenames">Scheme Names</a></li>
+                <li><a href="#listeners">Listeners and Pools</a></li>
+                <li><a href="#clients">Clients</a></li>
+            </ul>
+        </li>
+        <li class="top"><a href="#certificate">Certificates</a>
+            <ul>
+                <li><a href="#certnaming">Naming Certificates</a></li>
+                <li><a href="#signing">Signing Certificates</a></li>
+            </ul>
+        </li>
+        <li class="top"><a href="#administration">Administration</a>
+            <ul>
+                <li><a href="#certmanage">Managing Certificates</a></li>
+                <li><a href="#modconfig">Modifying Configuration</a></li>
+            </ul>
+        </li>
+        <li class="top"><a href="#examples">Using the examples</a>
+        </li>
+    </ul>
+    <article><a name="installation"></a>
+        <header><h2>Installation</h2></header>
+        <section>
+            <p>Before you begin installing you should determine what your S3C3 Scheme will look like.
+             Familiarize yourself with the basics of the <a href="#scheme">scheme</a> before beginning.</p>
+        </section>
+        <a name="requirements"></a>
+        <section><h3>Requirements:</h3>
+            <p>There are several requirements for S3C3 to run. In bulleted form:
+                <ul>
+                    <li>PHP 5.3 or later</li>
+                    <li><a href="http://pecl.php.net/package/pecl_http">PECL HTTP</a> support</li>
+                    <li><a href="http://php.net/manual/en/book.openssl.php">PHP OpenSSL</a> support</li>
+                    <li>A way to generate and sign certificates with proper usage settings like
+                    <a href="http://xca.sourceforge.net/">XCA</a></li>
+                </ul>
+            </p>
+            <p>Once you have met all of the requirements and have your certificates ready to go you can copy or move the s3c3
+            folder to where the web server will serve it out. Make sure to change the ownership of the files to web server
+            user, so it can update configurations when needed.</p>
+            <p>You will need 2 more directories where the web server has write privileges, that are outside the usual web
+            document space. One is for logging and the other will hold all the certificates. As an example, we will assume I
+            have all my certificates and keys ready in the keyexport folder of my home directory:<br />
+            <pre class="brush: bash">
+sudo mkdir /var/s3c3
+sudo mkdir /var/s3c3/certificate
+sudo cp ~/keyexport/* /var/s3c3/certificate/
+sudo mkdir /var/s3c3/log
+sudo chown -R www-data:www-data /var/s3c3
+            </pre>
+            </p>
+            <p>You do not need to worry about the permissions on the certificate store until <em>after</em> you complete the
+            installation, at which time you should verify that they are all, indeed 0400.</p>
+        </section>
+        <a name="configuration"></a>
+        <section><h3>Configuration:</h3>
+            <p>Configuration in S3C3 is managed first by a YAML file in app/conf/conf.yml and then, if desired, the token and
+            scheme configurations can be maintained in the database. Creating the configuration file first will save a whole
+            lot of time in terms of installation.</p>
+            <p>If you look at the sample configuration file (conf.yml.example) you will see a whole mess of comments. You do
+            not need to include the comments in your configuration file; they are there to help you initially set it up.</p>
+            <p>The configuration file is broken into 7 sections. Each of them are explained in detail here.</p>
+            <section>
+                <h4>Environment Settings [env]</h4>
+                <pre class="brush: yaml">
+env:
+    deployment: dev
+    config: db
+    local_scheme_name: polo1
+    debug:
+        level: 5
+        token: s3c3_debug_token
+                </pre>
+                <p>There are 4 sections in <code>env</code> with <code>debug</code> having 2 parts.</p>
+                <dl>
+                    <dt><code>deployment</code></dt><dd>What kind of deployment this is (development, [<code>dev</code>],
+                    staging [<code>stage</code>], or production [<code>prod</code>]). This software is meant only as a proof
+                    of concept, do <strong>NOT</strong> use this in production environments! This field is not currently used by the
+                    application beyond setting up logging targets.</dd>
+                    <dt><code>config</code></dt><dd>Either database [<code>db</code>] or file [<code>file</code>] - this
+                    determines where the application looks for the scheme configuration and token settings. Setting this value
+                    to <code>db</code> does not mean you will no longer need the conf.yml file in place!</dd>
+                    <dt><code>local_scheme_name</code></dt><dd>This is the client name for <em>this</em> machine. The client
+                    name must match the listener name with a number added at the end. (See <a href="#schemenames">Scheme Names</a>).</dd>
+                    <dt><code>debug.level</code></dt><dd>The debug level. Currently any value over 0 will cause the application to
+                    log debug output wherever it is called.</dd>
+                    <dt><code>debug.token</code></dt><dd>Debug token for use in extended logging.</dd>
+                </dl>
+                <h4>Database Settings [database]</h4>
+                <pre class="brush: yaml first-line: 8">
+database:
+    prefix: null
+    dbmaster:
+        driver: mysqli
+        host: masterdb.local
+        port: 3306
+        user: s3c3
+        password: gbYygw2EaT9cMtE9Rm7B6gLK
+        defaultdb: s3c3
+    dbslave:
+        driver: mysqli
+        host: slavedb.local
+        port: 3306
+        user: s3c3
+        password: 6VurfGpGAtg7mZLsQ63cn5wV
+        defaultdb: s3c3
+                </pre>
+                <p>There are 3 sections in <code>database</code> with <code>dbmaster</code> and <code>dbslave</code> having
+                6 subsections each. If your deployment does not use a master-slave replication you can use the same values
+                for both, otherwise the application will use the values in <code>dbmaster</code> for read-write connections 
+                and those in <code>dbslave</code> for read-only connections.</p>
+                <dl>
+                    <dt><code>prefix</code></dt><dd>A string prefix to put in front of your table names. Not thouroughly
+                    tested, may still have some bugs, although the unittest prefixing does work.</dd>
+                    <dt><code>dbmaster.driver</code></dt><dd>The driver name for your database connection. The application
+                    knows about MySQL, PostgreSQL and Sqlite. The <em>mysqli</em> driver is recommended for MySQL, while
+                    PostgreSQL uses <em>postgres</em> and Sqlite uses <em>sqlite</em>.</dd>
+                    <dt><code>dbmaster.host</code></dt><dd>The host that the application will need to connect to in order to
+                    connect to the database.</dd>
+                    <dt><code>dbmaster.port</code></dt><dd>The port on which the database server listens. The default port
+                    for MySQL is 3306, and for PostgreSQL is 5432. Note that Sqlite does not listen on a port, and the 'host'
+                    name must be the absolute path to the database file.</dd>
+                    <dt><code>dbmaster.user</code></dt><dd>The user name that has permission to read/write in the S3C3 database.</dd>
+                    <dt><code>dbmaster.password</code></dt><dd>The user password for the user in <code>user</code>, above.</dd>
+                    <dt><code>dbmaster.defaultdb</code></dt><dd>The actual database that the application will use.</dd>
+                    <dt><code>dbslave</code></dt><dd>Sub-items are the same as for <code>dbmaster</code>.</dd>
+                </dl>
+                <h4>Certificate Settings [certificate]</h4>
+                <pre class="brush: yaml first-line: 24">
+certificate:
+    store: /var/s3c3/certificates
+    validate: 1
+                </pre>
+                <p>There are 2 items in <code>certificate</code>.</p>
+                <dl>
+                    <dt><code>store</code></dt><dd>The absolute path to the directory where the certificates are stored. This
+                    directory <strong>must be writable by the web server user</strong>.</dd>
+                    <dt><code>validate</code></dt><dd>Whether the application should validate certificates [<code>1</code>] 
+                    or ignore validation [<code>0</code>]. Note that the application does not currently skip validation.</dd>
+                </dl>
+                <h4>S3C3 Local Listener Settings [s3c3_local_listener]</h4>
+                <pre class="brush: yaml first-line: 27">
+s3c3_local_listener:
+    endpoint: 'http://localhost/s3c3/'
+    internal_token: dTuHdJpvkBFzhXEcJyKAspBQ
+    version: 1
+                </pre>
+                <p>There are 3 items in <code>s3c3_local_listener</code>.</p>
+                <dl>
+                    <dt><code>endpoint</code></dt><dd>The full url to S3C3 on the local machine. This is used by the
+                    LocalClient to retrieve certificates for the Client class, and is used by the Bootstrap module.</dd>
+                    <dt><code>internal_token</code></dt><dd>A random string used to verify that the client sending the
+                    request is doing so from the same local configuration file that the listener is using.</dd>
+                    <dt><code>version</code></dt><dd>Currently version 1. Not checked, but may be used in later versions.</dd>
+                </dl>
+                <h4>Logging Destinations [logging]</h4>
+                <pre class="brush: yaml first-line: 31">
+logging:
+    file:
+        dir: /var/s3c3/log/
+    mail:
+        to: dev@s3c3demo.com
+        from: server@s3c3demo.com
+    sms:
+        to: 3605551234@txt.carrier.net
+        from: server@s3c3demo.com
+                </pre>
+                <p>There are 3 items in <code>logging</code>, with <code>mail</code> and <code>sms</code> having 2
+                sub-sections each and <code>file</code> having only one sub-section.</p>
+                <dl>
+                    <dt><code>file.dir</code></dt><dd>The directory to which the logging system will write. This directory
+                    <strong>must be writable by the web server user</strong>.</dd>
+                    <dt><code>mail.to</code></dt><dd>Where should email logs (error warnings) be sent? You can use a single
+                    email address here or an array of addresses like: <code>to: [jo@example.com, sam@other.com, pat@why.co.uk]</code></dd>
+                    <dt><code>mail.from</code></dt><dd>The address that mail will be sent from.</dd>
+                    <dt><code>sms.to</code></dt><dd>Where should critical messages be sent? This uses email format to send to
+                    SMS, so you can use regular old email addresses here as well. This is <em>only</em> used in a production
+                    environment, so is very not likely to be used in this application any time soon.</dd>
+                    <dt><code>sms.from</code></dt><dd>The address that SMS email will be sent from.</dd>
+                </dl>
+                <h4>Token Settings [token]</h4>
+                <pre class="brush: yaml first-line: 40">
+token:
+    expire: 90
+    length: 64
+    strength: maximum
+    delete_on_load: 1
+                </pre>
+                <p>There are 4 items in <code>token</code>.</p>
+                <dl>
+                    <dt><code>expire</code></dt><dd>Expire time in seconds.</dd>
+                    <dt><code>length</code></dt><dd>Length of tokens to generate, 32 - 128 characters. Recommend 64.</dd>
+                    <dt><code>strength</code></dt><dd>There are 4 strength levels to choose from for S3C3 single-use tokens:
+                        <ul>
+                            <li><code>weak</code> : uses only hexadecimal characters [0123456789abcdef]</li>
+                            <li><code>medium</code> : uses [0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz]</li>
+                            <li><code>strong</code> : uses [#+-./0123456789=ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~]</li>
+                            <li><code>maximum</code> : uses all printable ascii characters (0x20 - 0x7F) except ':' (0x3A)
+                            (which is used for token section division) but will not start or end with a space (0x20).</li>
+                        </ul>
+                    </dd>
+                    <dt><code>delete_on_load</code></dt><dd>Should the application delete expired token strings and mark them
+                    as expired before looking up a token context? [<code>1</code>] for yes, [<code>0</code>] for no. Unless
+                    the server you are testing this out on is incredibly busy, the extra overhead of one more database call
+                    on token lookup is worth the trouble saved by having to do it via cron job or other method.</dd>
+                </dl>
+                <h4>Scheme Layout [scheme]</h4>
+                <pre class="brush: yaml first-line: 45">
+scheme:
+    listeners:
+        polo: 'http://haproxy.polo.local/s3c3/'
+        gold: 'http://gold.local/s3c3/'
+        mac: 'http://vm09.local/s3c3/'
+    clients: [polo1, polo2, gold1, mac1]
+                </pre>
+                <p>There are 2 items in <code>scheme</code> with <code>listeners</code> having an arbitrary number of
+                sub-items.</p>
+                <dl>
+                    <dt><code>listeners</code></dt><dd>Listeners is a hash of listener names tied to their urls. This is
+                    used to let the Client know where to connect when it is told to connect to a listener. Note that the urls
+                    do not have to match the names of the listeners, although it would probably be easier for administration
+                    if they did in some manner. Urls must either end with a slash '/' or can be extended out to include
+                    index.php if the web server does not automatically send directory requests to that file.</dd>
+                    <dt><code>clients</code></dt><dd>An array of all client names that are allowed to connect to the listeners
+                    in this scheme. Notice that even though our sample scheme has 3 machines in the polo pool - only polo1
+                    and polo2 are allowed to connect to other listeners. This is perfectly valid in an S3C3 scheme.</dd>
+                </dl>
+            </section>
+        </section>
+        <a name="bootstrap_install"></a>
+        <section><h3>Calling Bootstrap:</h3>
+            <p>Now, you have your conf.yml file, what to do? You have a couple choices: you can (a) let the bootstrap module
+            load the conf.yml to its proper location, or (b) copy the conf.yml file to s3c3/app/conf/conf.yml, change
+            ownership of the file to the web server user and then call the bootstrap module to finalize the installation.</p>
+            <p>Method (a) first: we will assume that the S3C3 app is installed in /var/www/s3c3 and that the conf.yml file
+            you just completed is sitting in /tmp/conf.yml</p>
+            <pre class="brush: bash">
+cd /var/www/s3c3
+sudo php bootstrap/bootstrap.php -af /tmp/conf.yml
+            </pre>
+            <p>That's all it takes. The flag <code>-a</code> tells the bootstrap module to run on "autopilot" and the flag
+            <code>-f</code> tells the bootstrap module to load the configuration file from the filepath that follows the
+            flag. Note that you can combine flags, as in the example with only one '-'.</p>
+            <p>The only other flag available to the bootstrap module is <code>-c</code> which tells it to try and run in
+            color for xterm or similar. (This will not work in DOS, sorry). This comes in handy for the next method.</p>
+            <p>Method (b): again we will assume that the S3C3 app is installed in /var/www/s3c3 and that the conf.yml file
+            you just completed is sitting in /tmp/conf.yml. Further, we will assume that the web server username is
+            www-data.</p>
+            <pre class="brush: bash">
+cd /var/www/s3c3
+sudo mv /tmp/conf.yml /var/www/s3c3/app/conf/
+sudo chown www-data:www-data /var/www/s3c3/app/conf/conf.yml
+sudo php bootstrap/bootstrap.php -c
+            </pre>
+            <p>This will now start the bootstrap module and it will ask 'Conf.yml already exists, would you like the update
+            menu? (Y/N)'.<br />
+            <img src="htdocs/images/bootstrap1.png" /><br />
+            Answer Y (hit Enter, Y is the default) and you will get a menu that looks like:<br />
+            <img src="htdocs/images/bootstrap_menu.png" /><br />
+            Answer W and hit Enter and the bootstrap module will do all the same writing and saving that it does in method (a).</p>
+        </section>
+        <footer><a href="#toc">Return to top</a></footer>
+    </article>
+    <article><a name="scheme"></a>
+        <header><h2>Scheme Basics</h2></header>
+        <section>
+            <p>All of the configuration examples, etc. in this document will refer to this example Scheme:<br />
+            <img src="htdocs/images/sample_scheme.png" /></p>
+        </section>
+        <a name="schemenames"></a>
+        <section><h3>Scheme Names:</h3>
+            <p>In this scheme there are 3 listeners (polo, gold and mac) and 5 clients (polo1, polo2, polo3, gold1 and mac1).
+            Note that <em>all</em> client names <em>must</em> end with a number (even if there is only one client for a pool) and all
+            listener names <em>must not</em> end with a number.</p>
+            <p>The names of the listeners/pools and clients do not have to reflect the hostnames or urls of the machines.
+            They certainly can, but it is not a requirement. When a listener is responding to a client it is using the
+            built-in capabilities of HTTP to do so, and so does not require to know the client's url.</p>
+            <p>When a client is looking for the url for a specific listener it calls the configuration to find it.</p>
+        </section>
+        <a name="listeners"></a>
+        <section><h3>Listeners and Pools:</h3>
+            <p>The 3 listeners in the sample scheme are polo, gold and mac. The listener at gold is related to single machine,
+            as is the listener at mac. Looking at the polo listener, however, there are 3 machines that are tied to the same
+            listener. What makes this possible is the sharing of the listener key (polo.pem) for polo with all 3 machines in
+            the pool, while each has its own client key (polo1.pem at polo1, for example).</p>
+        </section>
+        <a name="clients"></a>
+        <section><h3>Clients:</h3>
+            <p>Each client has its own, unique private client key, and all the servers in the scheme should have a copy of
+            its public key. So for the mac1 client, it has a copy of mac1.pem in the certificate store, while all the other
+            machines have a copy of mac1.crt in their certificate stores.</p>
+            <p>Although every client name must end in a number, it does not need to fill out a strict counting order. If we
+            had wanted to we could have named gold1 as gold7 with no problems.</p>
+        </section>
+        <footer><a href="#toc">Return to top</a></footer>
+    </article>
+    <article><a name="certificates"></a>
+        <header><h2>Certificates</h2></header>
+        <section>
+            <p>Certificate handling in S3C3 is core to making the system work, and is very closely tied to the S3C3 Scheme
+            and its naming conventions.</p>
+        </section>
+        <a name="certnaming"></a>
+        <section><h3>Naming Certificates:</h3>
+            <p>In S3C3 public key SSL certificates are referred to as certificates or certs, while private keys are referred
+            to as keys. All certificates and keys used with S3C3 <em>must</em> stored in the .pem format, with public SSL
+            certificates saved with a .crt extension and private keys saved with a .pem extension.</p>
+            <p>The names of certificates and keys must match their targets. So the key for the polo listener pool would be
+            polo.pem, and the certificate for the same pool would be polo.crt. Likewise, the key for the mac1 client would be
+            mac1.pem and the certificate would be mac1.crt.</p>
+            <p>The only exception to this rule is the root signing certificate, which must be named as XXX_root.crt or
+            XXX_ca.crt or XXX.ca.crt - where XXX can be replaced with any ascii string. In the unittests the name of the root
+            certificate is s3c3_root.crt.</p>
+        </section>
+        <a name="signing"></a>
+        <section><h3>Signing Certificates:</h3>
+            <p>In order to ensure that clients are who they claim to be, all certificates used in S3C3 must be signed by the
+            known root certificate. If you don't wish to do this from the command line I recommend
+            <a href="http://xca.sourceforge.net/">XCA</a>.
+            <a href="Generating, signing and exporting keys and certificates with XCA.pdf">Here is a quick step-by-step (pdf).</a></p>
+        </section>
+        <footer><a href="#toc">Return to top</a></footer>
+    </article>
+    <article><a name="administration"></a>
+        <header><h2>Administration</h2></header>
+        <section><p>Most administration tasks can be accomplished through the bootstrap module. This is the menu that you will
+        work from:<br />
+        <img src="htdocs/images/bootstrap_menu.png" /></p>
+        <p>All items below will refer to menu items by their number or letter.</p>
+        </section>
+        <a name="certmanage"></a>
+        <section><h3>Managing Certificates:</h3>
+            <section>
+                <h4>9: Remove Certificate</h4>
+                <p>Select 9 from the menu to select a certificate to remove. You will get a list of certificates in the store
+                and you can select one by the number next to it. This <em>does not</em> include private keys or the root
+                certificate. Those must be managed manually.</p>
+                <h4>8: Add Certificate</h4>
+                <p>Select 8 from the menu to add a certificate to the store and follow the prompts. You must ensure that
+                client certificates are valid client certificates and server certificates are valid server certificates. You
+                cannot overwrite a certificate for a client or server already in the store. (And now you know why I put the
+                instructions for 9 before 8).</p>
+            </section>
+        </section>
+        <a name="modconfig"></a>
+        <section><h3>Modifying Configuration:</h3>
+            <p>Each of the first 7 items in the menu corresponds to a section in the configuration file. Select one of the
+            sections and you will first be shown the current configuration and asked if you wish to edit it. If you select Y
+            the bootstrap module will step you through each item in that section to update it, show you the results and ask
+            again if you wish to edit it. If you are happy with how it looks enter N and you will be taken back to the main
+            menu. In order to save your changes select W to write them out before closing, or if you have made no changes you
+            can select X to exit.</p>
+        </section>
+        <footer><a href="#toc">Return to top</a></footer>
+    </article>
+    <article><a name="examples"></a>
+        <header><h2>Using the examples</h2></header>
+        <section>
+            <p>The sample shims for Client and Listener are in the s3c3/examples directory. The example is a very simple
+            command-line script that offers a small menu. The example can be run by:</p>
+            <pre class="brush: bash">
+cd /var/www/s3c3
+sudo php examples/example.php
+            </pre>
+            <p>The output of one of the test runs looks like:<br />First we select a listener by typing 'S' and hitting enter</p>
+            <pre>
+S3C3 Example Menu
+
+S:  Select Listener
+G:  Generate Requests
+X:  Exit
+Please select an action from the menu above > s
+0:  polo
+1:  gold
+2:  mac
+X:  Cancel and go back
+Please select a listener from the list above > 2
+            </pre>
+            <p>After selecting the listener the menu refreshes and shows us the selected listener. Now we choose to generate 'G'.</p>
+            <pre>
+S3C3 Example Menu
+
+S:  Select Listener (mac)
+G:  Generate Requests
+X:  Exit
+Please select an action from the menu above > g
+How many requests would you like to generate? [1 - 10] > 5
+Generate requests with errors? (Y/N) [N] > y
+            </pre>
+            <p>The example will take some time to generate the requests, get the initial token and then send the requests and
+            display the results after all requests have completed. (Note that the example does not completely conform to the
+            SRS, in that the listener is not stripping the password from the results. This change was made in order to verify
+            that all the fields being recieved by the listener were received exactly as sent.)</p>
+            <pre>
+stdClass Object
+(
+    [dividend] => 339
+    [divisor] => 15
+    [name] => Mr. Scruffy
+    [password] => yffurcS .rM
+    [answer] => 22.6
+)
+stdClass Object
+(
+    [dividend] => 951
+    [divisor] => 86
+    [name] => Yokyok
+    [password] => koykoYX
+    [error] => Array
+        (
+            [0] => Bad password
+        )
+
+)
+stdClass Object
+(
+    [dividend] => 533
+    [divisor] => 49
+    [name] => Shojo
+    [password] => ojohS
+    [answer] => 10.877551020408
+)
+stdClass Object
+(
+    [dividend] => 180
+    [divisor] => 72
+    [name] => Zz'dtri
+    [password] => irtd'zZ
+    [answer] => 2.5
+)
+stdClass Object
+(
+    [dividend] => 288
+    [divisor] => 80
+    [name] => Durkon Thundershield
+    [password] => dleihsrednuhT nokruD
+    [answer] => 3.6
+)
+Hit enter to continue or X to exit > x
+            </pre>
+        </section>
+        <footer><a href="#toc">Return to top</a></footer>
+    </article>
+</section>
+
+<footer class="pagefoot">
+    <div>S3C3 Documentation <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="htdocs/images/cc80x15.png" /></a> Sjan Evardsson, 2013 - This work is licensed under a <a style="color:#666" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div>
+</footer>
+</body>
+</html>

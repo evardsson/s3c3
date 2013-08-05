@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>    S3C3 API Documentation &raquo; \s3c3\bootstrap\CertHandler
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+            <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">S3C3 API Documentation</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/s3c3.html">s3c3</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <div class="row">
+        <div class="span4">
+                    <span class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </span>
+    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                    <li class="method public">
+        <a href="#method_loadCertificate" title="loadCertificate :: Static method to load a new PEM certificate into the scheme">
+            <span class="description">Static method to load a new PEM certificate into the scheme</span><pre>loadCertificate</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_writeToStore" title="writeToStore :: Write the current certificate to the certificate store">
+            <span class="description">Write the current certificate to the certificate store</span><pre>writeToStore</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_removeFromStore" title="removeFromStore :: Remove a certificate from the store
+This will not remove private certificates (with a .pem extension)">
+            <span class="description">Remove a certificate from the store
+This will not remove private certificates (with a .pem extension)</span><pre>removeFromStore</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_applyCRL" title="applyCRL :: Take in a CRL, verify the signature and date and then take needed action">
+            <span class="description">Take in a CRL, verify the signature and date and then take needed action</span><pre>applyCRL</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method___construct" title="__construct :: Constructor
+Create a new Cert object">
+            <span class="description">Constructor
+Create a new Cert object</span><pre>__construct</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_scanStore" title="scanStore :: Scan certs and keys from cert store">
+            <span class="description">Scan certs and keys from cert store</span><pre>scanStore</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_checkFilePermissions" title="checkFilePermissions :: Check the file permissions of the certificate store and set to 0400 if
+the permissions are incorrect">
+            <span class="description">Check the file permissions of the certificate store and set to 0400 if
+the permissions are incorrect</span><pre>checkFilePermissions</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getKnownCertificates" title="getKnownCertificates :: List all known certificates for this scheme">
+            <span class="description">List all known certificates for this scheme</span><pre>getKnownCertificates</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getRoot" title="getRoot :: Get our root CA">
+            <span class="description">Get our root CA</span><pre>getRoot</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getLocalServerKey" title="getLocalServerKey :: Get our local server key">
+            <span class="description">Get our local server key</span><pre>getLocalServerKey</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getLocalClientKey" title="getLocalClientKey :: Get our local client key">
+            <span class="description">Get our local client key</span><pre>getLocalClientKey</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getCertificate" title="getCertificate :: Get our current certificate">
+            <span class="description">Get our current certificate</span><pre>getCertificate</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setName" title="setName :: Set our current certificate name">
+            <span class="description">Set our current certificate name</span><pre>setName</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setCertificate" title="setCertificate :: Set our certificate text">
+            <span class="description">Set our certificate text</span><pre>setCertificate</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getCertificateFromStore" title="getCertificateFromStore :: Get a cert for a server pool or specfic client">
+            <span class="description">Get a cert for a server pool or specfic client</span><pre>getCertificateFromStore</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_isValid" title="isValid :: Is this a valid cert (signed by our root and for the purpose set?)">
+            <span class="description">Is this a valid cert (signed by our root and for the purpose set?)</span><pre>isValid</pre>
+        </a>
+    </li>
+
+                                                                                                                                                                                                                                                                                                                                        </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li class="method protected inherited">
+                            <a href="#method_checkName" title="checkName :: Check a certificate name against our configured scheme">
+                                <span class="description">Check a certificate name against our configured scheme</span><pre>checkName</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected inherited">
+                            <a href="#method_findCert" title="findCert :: Find a certificate by name">
+                                <span class="description">Find a certificate by name</span><pre>findCert</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected inherited">
+                            <a href="#method_verifyCertificateDate" title="verifyCertificateDate :: Verify that a cert is currently valid by date">
+                                <span class="description">Verify that a cert is currently valid by date</span><pre>verifyCertificateDate</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected inherited">
+                            <a href="#method_verifyCertificateSignature" title="verifyCertificateSignature :: Verify that a cert is signed by our known root ca">
+                                <span class="description">Verify that a cert is signed by our known root ca</span><pre>verifyCertificateSignature</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method protected inherited">
+                            <a href="#method_verifyCertificateUse" title="verifyCertificateUse :: Verify that a cert is valid for the selected purpose">
+                                <span class="description">Verify that a cert is valid for the selected purpose</span><pre>verifyCertificateUse</pre>
+                            </a>
+                        </li>
+                                                </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                                <li class="constant ">
+                    <a href="#constant_CLIENT" title="CLIENT :: ">
+                        <span class="description"></span><pre>CLIENT</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_SERVER" title="SERVER :: ">
+                        <span class="description"></span><pre>SERVER</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_CRL_SIGN" title="CRL_SIGN :: ">
+                        <span class="description"></span><pre>CRL_SIGN</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_CA" title="CA :: ">
+                        <span class="description"></span><pre>CA</pre>
+                    </a>
+                </li>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>CertHandler</h1>
+                <small style="display: block; text-align: right">
+                                            Extends <a href="../classes/s3c3.core.crypto.Cert.html">\s3c3\core\crypto\Cert</a>
+                                                        </small>
+                <p class="short_description">class CertHandler</p>
+                <div class="details">
+                    <div class="long_description">
+                        
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        since
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>version 1.0</p>
+
+                                    </td>
+                                </tr>
+                                                                        </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method_loadCertificate"></a>
+                        <div class="element clickable method public method_loadCertificate" data-toggle="collapse" data-target=".method_loadCertificate .collapse">
+                            <h2>Static method to load a new PEM certificate into the scheme</h2>
+                            <pre>loadCertificate($name, $purpose, $certstring) : void</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$purpose</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$certstring</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_writeToStore"></a>
+                        <div class="element clickable method public method_writeToStore" data-toggle="collapse" data-target=".method_writeToStore .collapse">
+                            <h2>Write the current certificate to the certificate store</h2>
+                            <pre>writeToStore() : boolean</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p><p>success</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_removeFromStore"></a>
+                        <div class="element clickable method public method_removeFromStore" data-toggle="collapse" data-target=".method_removeFromStore .collapse">
+                            <h2>Remove a certificate from the store
+This will not remove private certificates (with a .pem extension)</h2>
+                            <pre>removeFromStore($name) : boolean</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p><p>success</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_applyCRL"></a>
+                        <div class="element clickable method public method_applyCRL" data-toggle="collapse" data-target=".method_applyCRL .collapse">
+                            <h2>Take in a CRL, verify the signature and date and then take needed action</h2>
+                            <pre>applyCRL($crl) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$crl</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method___construct"></a>
+                        <div class="element clickable method public method___construct inherited" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>Constructor
+Create a new Cert object</h2>
+                            <pre>__construct($name = null, $purpose = self::SERVER, $isPrivate = false) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$purpose</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$isPrivate</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_scanStore"></a>
+                        <div class="element clickable method public method_scanStore inherited" data-toggle="collapse" data-target=".method_scanStore .collapse">
+                            <h2>Scan certs and keys from cert store</h2>
+                            <pre>scanStore($force = false) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$force</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_checkFilePermissions"></a>
+                        <div class="element clickable method public method_checkFilePermissions inherited" data-toggle="collapse" data-target=".method_checkFilePermissions .collapse">
+                            <h2>Check the file permissions of the certificate store and set to 0400 if
+the permissions are incorrect</h2>
+                            <pre>checkFilePermissions() : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p><p>success</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getKnownCertificates"></a>
+                        <div class="element clickable method public method_getKnownCertificates inherited" data-toggle="collapse" data-target=".method_getKnownCertificates .collapse">
+                            <h2>List all known certificates for this scheme</h2>
+                            <pre>getKnownCertificates() : array</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getRoot"></a>
+                        <div class="element clickable method public method_getRoot inherited" data-toggle="collapse" data-target=".method_getRoot .collapse">
+                            <h2>Get our root CA</h2>
+                            <pre>getRoot($asObj = false) : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$asObj</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p><p>certificate or Cert object</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getLocalServerKey"></a>
+                        <div class="element clickable method public method_getLocalServerKey inherited" data-toggle="collapse" data-target=".method_getLocalServerKey .collapse">
+                            <h2>Get our local server key</h2>
+                            <pre>getLocalServerKey($asObj = false) : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$asObj</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p><p>certificate or Cert object</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getLocalClientKey"></a>
+                        <div class="element clickable method public method_getLocalClientKey inherited" data-toggle="collapse" data-target=".method_getLocalClientKey .collapse">
+                            <h2>Get our local client key</h2>
+                            <pre>getLocalClientKey($asObj = false) : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$asObj</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p><p>certificate or Cert object</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getCertificate"></a>
+                        <div class="element clickable method public method_getCertificate inherited" data-toggle="collapse" data-target=".method_getCertificate .collapse">
+                            <h2>Get our current certificate</h2>
+                            <pre>getCertificate() : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p><p>certificate</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setName"></a>
+                        <div class="element clickable method public method_setName inherited" data-toggle="collapse" data-target=".method_setName .collapse">
+                            <h2>Set our current certificate name</h2>
+                            <pre>setName($name) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_setCertificate"></a>
+                        <div class="element clickable method public method_setCertificate inherited" data-toggle="collapse" data-target=".method_setCertificate .collapse">
+                            <h2>Set our certificate text</h2>
+                            <pre>setCertificate($certificate) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$certificate</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getCertificateFromStore"></a>
+                        <div class="element clickable method public method_getCertificateFromStore inherited" data-toggle="collapse" data-target=".method_getCertificateFromStore .collapse">
+                            <h2>Get a cert for a server pool or specfic client</h2>
+                            <pre>getCertificateFromStore($name, $purpose = self::CLIENT, $validate = true, $isPrivate = false) : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    throws
+                                                </th>
+                                                <td>
+                                                                                                                                                                    
+
+                                                                                                                                                                    
+
+                                                                                                                                                                    
+
+                                                                                                                                                                    
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$purpose</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$validate</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$isPrivate</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p><p>certificate</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_isValid"></a>
+                        <div class="element clickable method public method_isValid inherited" data-toggle="collapse" data-target=".method_isValid .collapse">
+                            <h2>Is this a valid cert (signed by our root and for the purpose set?)</h2>
+                            <pre>isValid($purpose = self::CLIENT, $hideExceptions = true) : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    throws
+                                                </th>
+                                                <td>
+                                                                                                                                                                    
+
+                                                                                                                                                                    
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$purpose</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$hideExceptions</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_checkName"></a>
+                        <div class="element clickable method protected method_checkName inherited" data-toggle="collapse" data-target=".method_checkName .collapse">
+                            <h2>Check a certificate name against our configured scheme</h2>
+                            <pre>checkName($name, $purpose) : void</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    throws
+                                                </th>
+                                                <td>
+                                                                                                                                                                    
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$purpose</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_findCert"></a>
+                        <div class="element clickable method protected method_findCert inherited" data-toggle="collapse" data-target=".method_findCert .collapse">
+                            <h2>Find a certificate by name</h2>
+                            <pre>findCert($name) : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p><p>certificate or null</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_verifyCertificateDate"></a>
+                        <div class="element clickable method protected method_verifyCertificateDate inherited" data-toggle="collapse" data-target=".method_verifyCertificateDate .collapse">
+                            <h2>Verify that a cert is currently valid by date</h2>
+                            <pre>verifyCertificateDate($date = null) : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                <span class="label">final</span>                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$date</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_verifyCertificateSignature"></a>
+                        <div class="element clickable method protected method_verifyCertificateSignature inherited" data-toggle="collapse" data-target=".method_verifyCertificateSignature .collapse">
+                            <h2>Verify that a cert is signed by our known root ca</h2>
+                            <pre>verifyCertificateSignature() : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                <span class="label">final</span>                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_verifyCertificateUse"></a>
+                        <div class="element clickable method protected method_verifyCertificateUse inherited" data-toggle="collapse" data-target=".method_verifyCertificateUse .collapse">
+                            <h2>Verify that a cert is valid for the selected purpose</h2>
+                            <pre>verifyCertificateUse($purpose = self::CLIENT) : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                <span class="label">final</span>                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$purpose</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_CLIENT"> </a>
+                            <div class="element clickable constant  constant_CLIENT inherited" data-toggle="collapse" data-target=".constant_CLIENT .collapse">
+                                <h2>CLIENT</h2>
+                                <pre>CLIENT</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_SERVER"> </a>
+                            <div class="element clickable constant  constant_SERVER inherited" data-toggle="collapse" data-target=".constant_SERVER .collapse">
+                                <h2>SERVER</h2>
+                                <pre>SERVER</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_CRL_SIGN"> </a>
+                            <div class="element clickable constant  constant_CRL_SIGN inherited" data-toggle="collapse" data-target=".constant_CRL_SIGN .collapse">
+                                <h2>CRL_SIGN</h2>
+                                <pre>CRL_SIGN</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_CA"> </a>
+                            <div class="element clickable constant  constant_CA inherited" data-toggle="collapse" data-target=".constant_CA .collapse">
+                                <h2>CA</h2>
+                                <pre>CA</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
+                                                                <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property_certs"> </a>
+                            <div class="element clickable property protected property_certs inherited" data-toggle="collapse" data-target=".property_certs .collapse">
+                                <h2>static array of valid public certificate filenames</h2>
+                                <pre>certs</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                    <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_keys"> </a>
+                            <div class="element clickable property protected property_keys inherited" data-toggle="collapse" data-target=".property_keys .collapse">
+                                <h2>static array of valid private key certificate filenames</h2>
+                                <pre>keys</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                    <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_root"> </a>
+                            <div class="element clickable property protected property_root inherited" data-toggle="collapse" data-target=".property_root .collapse">
+                                <h2>string valid root certificate filenamme</h2>
+                                <pre>root</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                    <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_certificate"> </a>
+                            <div class="element clickable property protected property_certificate inherited" data-toggle="collapse" data-target=".property_certificate .collapse">
+                                <h2>the string PEM certificate for this instance</h2>
+                                <pre>certificate</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_name"> </a>
+                            <div class="element clickable property protected property_name inherited" data-toggle="collapse" data-target=".property_name .collapse">
+                                <h2>the string name for this instance</h2>
+                                <pre>name</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_isPrivate"> </a>
+                            <div class="element clickable property protected property_isPrivate inherited" data-toggle="collapse" data-target=".property_isPrivate .collapse">
+                                <h2>boolean value whether this certificate is a private key certificate</h2>
+                                <pre>isPrivate</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>protected</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\s3c3\bootstrap\CertHandler"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/s3c3.bootstrap.html">bootstrap</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/s3c3.bootstrap.CertHandler.html">CertHandler</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Fri, 02 Aug 2013 00:42:16 +0000.<br/>
+    </footer>
+    </body>
+</html>

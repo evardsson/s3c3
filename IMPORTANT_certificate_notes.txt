@@ -1,0 +1,19 @@
+keys must be named for server names in scheme
+
+.pem = private keys
+.crt = public certificate
+
+server/pool certificate & key names vs client certificate & key names:
+| hostname | Server/Pool | Machine | Server Cert | Client Cert | Server Key | Client Key | Listener URL       |
+| -------- | ----------- | ------- | ----------- | ----------- | ---------- | ---------- | ------------------ |
+| polo-a   | polo        | polo1   | polo.crt    | polo1.crt   | polo.pem   | polo1.pem  | http://polo.loc/   |
+| polo-b   | polo        | polo2   | polo.crt    | polo2.crt   | polo.pem   | polo2.pem  | http://polo.loc/   |
+| goldvm   | gold        | gold1   | gold.crt    | gold1.crt   | gold.pem   | gold1.pem  | https://gold.loc/  |
+| argon    | mac         | mac1    | mac.crt     | mac1.crt    | mac.pem    | mac1.pem   | http://mac.loc/s3/ |
+
+The servers in the polo pool both answer at the same URL - thus the shared server key
+gold and mac answer at different URLs - thus they are not pooled
+
+Notice that the hostnames do not need to be reflected in the scheme names, as long as the
+administrator knows what goes where.
+

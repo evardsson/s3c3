@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+  <parser>
+    <target>docs/phpdoc</target>
+  </parser>
+  <transformer>
+    <target>docs/phpdoc</target>
+  </transformer>
+  <files>
+      <directory>app</directory>
+      <directory>bootstrap</directory>
+      <directory>examples</directory>
+      <ignore>composer/*</ignore>
+      <ignore>unittest/*</ignore>
+  </files>
+  <title>S3C3 API Documentation</title>
+</phpdoc>
+

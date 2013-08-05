@@ -1,0 +1,54 @@
+env:
+    deployment: dev
+    config: db
+    local_scheme_name: polo1
+    debug:
+        level: 5
+        token: s3c3_debug_token
+database:
+    prefix: null
+    dbmaster:
+        driver: mysqli
+        host: 127.0.0.1
+        port: 3306
+        user: s3c3
+        password: gbYygw2EaT9cMtE9Rm7B6gLK6VurfGpGAtg7mZLsQ63cn5wV
+        defaultdb: s3c3
+    dbslave:
+        driver: mysqli
+        host: 127.0.0.1
+        port: 3306
+        user: s3c3
+        password: gbYygw2EaT9cMtE9Rm7B6gLK6VurfGpGAtg7mZLsQ63cn5wV
+        defaultdb: s3c3
+certificate:
+    store: /var/s3c3/certificates
+    validate: 1
+s3c3_local_listener:
+    endpoint: 'http://localhost/s3c3/'
+    internal_token: dTuHdJpvkBFzhXEcJyKAspBQ
+    version: 1
+logging:
+    file:
+        dir: /Users/sjan/s3c3/log/
+    mail:
+        to: sjan@evardsson.com
+        from: sjan@evardsson.com
+    sms:
+        to: null
+        from: null
+token:
+    expire: 90
+    length: 64
+    strength: maximum
+    delete_on_load: 1
+scheme:
+    listeners:
+        polo: 'http://polo.local/s3c3/'
+        gold: 'http://gold.local/s3c3/'
+        mac: 'http://mac.local/s3c3/'
+    clients:
+        - polo1
+        - polo2
+        - gold1
+        - mac1
