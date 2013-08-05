@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>    S3C3 API Documentation &raquo; \s3c3\core\db\Database
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+            <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">S3C3 API Documentation</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/s3c3.html">s3c3</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <div class="row">
+        <div class="span4">
+                    <span class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </span>
+    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                                                                            <li class="method public">
+        <a href="#method_getDatabase" title="getDatabase :: Method to grab the handle to a specified database">
+            <span class="description">Method to grab the handle to a specified database</span><pre>getDatabase</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getPrefix" title="getPrefix :: Get the DB prefix (including for unittests)">
+            <span class="description">Get the DB prefix (including for unittests)</span><pre>getPrefix</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_updatePrefix" title="updatePrefix :: Temporarily update the DB prefix (useful in bootstrap)">
+            <span class="description">Temporarily update the DB prefix (useful in bootstrap)</span><pre>updatePrefix</pre>
+        </a>
+    </li>
+
+                                                                                                                                                                <li class="method public">
+        <a href="#method_getSlave" title="getSlave :: Method to grab the read-only handle to a specified database">
+            <span class="description">Method to grab the read-only handle to a specified database</span><pre>getSlave</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getMaster" title="getMaster :: Method to grab the read-write handle to a specified database">
+            <span class="description">Method to grab the read-write handle to a specified database</span><pre>getMaster</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_buildTables" title="buildTables :: Build the tables - this will only work with an empty database, OR with a
+defined prefix in a database with no tables bearing that prefix">
+            <span class="description">Build the tables - this will only work with an empty database, OR with a
+defined prefix in a database with no tables bearing that prefix</span><pre>buildTables</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getAll" title="getAll :: Get all rows that match the args passed">
+            <span class="description">Get all rows that match the args passed</span><pre>getAll</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getRow" title="getRow :: Get one row that matches the args passed">
+            <span class="description">Get one row that matches the args passed</span><pre>getRow</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getColumn" title="getColumn :: Get one column that matches the args passed">
+            <span class="description">Get one column that matches the args passed</span><pre>getColumn</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_getOne" title="getOne :: Get one single value (from one column in one row) that matches the args passed">
+            <span class="description">Get one single value (from one column in one row) that matches the args passed</span><pre>getOne</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_insert" title="insert :: Insert a row">
+            <span class="description">Insert a row</span><pre>insert</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_update" title="update :: Update a row">
+            <span class="description">Update a row</span><pre>update</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_delete" title="delete :: Update a row">
+            <span class="description">Update a row</span><pre>delete</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_execute" title="execute :: Execute a raw SQL query - useful only for updates/deletes
+DO NOT USE WITH USER INPUT! THIS DOES NO CHECKING OR ESCAPING OF SQL! DO NOT
+USE NON-STANDARD SQL-92 QUERIES IN THIS METHOD!">
+            <span class="description">Execute a raw SQL query - useful only for updates/deletes
+DO NOT USE WITH USER INPUT! THIS DOES NO CHECKING OR ESCAPING OF SQL! DO NOT
+USE NON-STANDARD SQL-92 QUERIES IN THIS METHOD!</span><pre>execute</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_buildSearchClause" title="buildSearchClause :: Build a WHERE clause for a query">
+            <span class="description">Build a WHERE clause for a query</span><pre>buildSearchClause</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                            <li class="method private">
+                            <a href="#method___construct" title="__construct :: Construct a new Database object">
+                                <span class="description">Construct a new Database object</span><pre>__construct</pre>
+                            </a>
+                        </li>
+                                                                                                                                                                                            <li class="method private">
+                            <a href="#method_getConnection" title="getConnection :: Get the actual connection">
+                                <span class="description">Get the actual connection</span><pre>getConnection</pre>
+                            </a>
+                        </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                                <li class="constant ">
+                    <a href="#constant_EQ" title="EQ :: For building searches with EQUAL (=)">
+                        <span class="description">For building searches with EQUAL (=)</span><pre>EQ</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_NE" title="NE :: For building searches with NOT EQUAL (!=)">
+                        <span class="description">For building searches with NOT EQUAL (!=)</span><pre>NE</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_LT" title="LT :: For building searches with LESS THAN (&lt;)">
+                        <span class="description">For building searches with LESS THAN (&lt;)</span><pre>LT</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_LTE" title="LTE :: For building searches with LESS THAN OR EQUAL (&lt;=)">
+                        <span class="description">For building searches with LESS THAN OR EQUAL (&lt;=)</span><pre>LTE</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_GT" title="GT :: For building searches with GREATER THAN (&gt;)">
+                        <span class="description">For building searches with GREATER THAN (&gt;)</span><pre>GT</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_GTE" title="GTE :: For building searches with GREATER THAN OR EQUAL (&gt;=)">
+                        <span class="description">For building searches with GREATER THAN OR EQUAL (&gt;=)</span><pre>GTE</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_BTW" title="BTW :: For building searches with BETWEEN (BETWEEN ? AND ?)">
+                        <span class="description">For building searches with BETWEEN (BETWEEN ? AND ?)</span><pre>BTW</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_IN" title="IN :: For building searches with IN">
+                        <span class="description">For building searches with IN</span><pre>IN</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_NIN" title="NIN :: For building searches with NOT IN">
+                        <span class="description">For building searches with NOT IN</span><pre>NIN</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_NUL" title="NUL :: For building searches with IS NULL">
+                        <span class="description">For building searches with IS NULL</span><pre>NUL</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_NNUL" title="NNUL :: For building searches with IS NOT NULL">
+                        <span class="description">For building searches with IS NOT NULL</span><pre>NNUL</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_LIKE" title="LIKE :: For building searches with LIKE">
+                        <span class="description">For building searches with LIKE</span><pre>LIKE</pre>
+                    </a>
+                </li>
+                                <li class="constant ">
+                    <a href="#constant_NLIKE" title="NLIKE :: For building searches with NOT LIKE">
+                        <span class="description">For building searches with NOT LIKE</span><pre>NLIKE</pre>
+                    </a>
+                </li>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>Database</h1>
+                <small style="display: block; text-align: right">
+                                                        </small>
+                <p class="short_description">class Database</p>
+                <div class="details">
+                    <div class="long_description">
+                        
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        since
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>version 1.0</p>
+
+                                    </td>
+                                </tr>
+                                                                        </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method___construct"></a>
+                        <div class="element clickable method private method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>Construct a new Database object</h2>
+                            <pre>__construct() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    access
+                                                </th>
+                                                <td>
+                                                                                                                                                                    <p>private</p>
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getDatabase"></a>
+                        <div class="element clickable method public method_getDatabase" data-toggle="collapse" data-target=".method_getDatabase .collapse">
+                            <h2>Method to grab the handle to a specified database</h2>
+                            <pre>getDatabase($db = null, $master = true) : \s3c3\core\db\ADODB_Connection</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$db</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$master</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>\s3c3\core\db\ADODB_Connection</code><p><p>object</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getPrefix"></a>
+                        <div class="element clickable method public method_getPrefix" data-toggle="collapse" data-target=".method_getPrefix .collapse">
+                            <h2>Get the DB prefix (including for unittests)</h2>
+                            <pre>getPrefix() : string</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_updatePrefix"></a>
+                        <div class="element clickable method public method_updatePrefix" data-toggle="collapse" data-target=".method_updatePrefix .collapse">
+                            <h2>Temporarily update the DB prefix (useful in bootstrap)</h2>
+                            <pre>updatePrefix($newPrefix) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$newPrefix</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getConnection"></a>
+                        <div class="element clickable method private method_getConnection" data-toggle="collapse" data-target=".method_getConnection .collapse">
+                            <h2>Get the actual connection</h2>
+                            <pre>getConnection($db, $dbh) : \s3c3\core\db\ADODB_Connection</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$db</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$dbh</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>\s3c3\core\db\ADODB_Connection</code><p><p>object</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getSlave"></a>
+                        <div class="element clickable method public method_getSlave" data-toggle="collapse" data-target=".method_getSlave .collapse">
+                            <h2>Method to grab the read-only handle to a specified database</h2>
+                            <pre>getSlave($db = null) : \s3c3\core\db\ADODB_Connection</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$db</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>\s3c3\core\db\ADODB_Connection</code><p><p>object</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getMaster"></a>
+                        <div class="element clickable method public method_getMaster" data-toggle="collapse" data-target=".method_getMaster .collapse">
+                            <h2>Method to grab the read-write handle to a specified database</h2>
+                            <pre>getMaster($db = null) : \s3c3\core\db\ADODB_Connection</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$db</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>\s3c3\core\db\ADODB_Connection</code><p><p>object</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_buildTables"></a>
+                        <div class="element clickable method public method_buildTables" data-toggle="collapse" data-target=".method_buildTables .collapse">
+                            <h2>Build the tables - this will only work with an empty database, OR with a
+defined prefix in a database with no tables bearing that prefix</h2>
+                            <pre>buildTables($dbtype = &#039;mysql&#039;) </pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    throws
+                                                </th>
+                                                <td>
+                                                                                                                                                                    
+
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$dbtype</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getAll"></a>
+                        <div class="element clickable method public method_getAll" data-toggle="collapse" data-target=".method_getAll .collapse">
+                            <h2>Get all rows that match the args passed</h2>
+                            <pre>getAll($table, $args, $fields = array(), $order = false, $limit = false) : array</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$table</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$fields</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$order</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$limit</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getRow"></a>
+                        <div class="element clickable method public method_getRow" data-toggle="collapse" data-target=".method_getRow .collapse">
+                            <h2>Get one row that matches the args passed</h2>
+                            <pre>getRow($table, $args, $fields = array(), $order = false) : array</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$table</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$fields</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$order</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getColumn"></a>
+                        <div class="element clickable method public method_getColumn" data-toggle="collapse" data-target=".method_getColumn .collapse">
+                            <h2>Get one column that matches the args passed</h2>
+                            <pre>getColumn($table, $args, $field, $order = false, $limit = false) : array</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$table</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$field</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$order</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$limit</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getOne"></a>
+                        <div class="element clickable method public method_getOne" data-toggle="collapse" data-target=".method_getOne .collapse">
+                            <h2>Get one single value (from one column in one row) that matches the args passed</h2>
+                            <pre>getOne($table, $args, $field, $order = false) : array</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$table</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$field</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$order</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_insert"></a>
+                        <div class="element clickable method public method_insert" data-toggle="collapse" data-target=".method_insert .collapse">
+                            <h2>Insert a row</h2>
+                            <pre>insert($table, $data) : array</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$table</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$data</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_update"></a>
+                        <div class="element clickable method public method_update" data-toggle="collapse" data-target=".method_update .collapse">
+                            <h2>Update a row</h2>
+                            <pre>update($table, $id, $data) : array</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$table</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$id</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$data</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_delete"></a>
+                        <div class="element clickable method public method_delete" data-toggle="collapse" data-target=".method_delete .collapse">
+                            <h2>Update a row</h2>
+                            <pre>delete($table, $id) : array</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$table</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$id</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array</code><p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_execute"></a>
+                        <div class="element clickable method public method_execute" data-toggle="collapse" data-target=".method_execute .collapse">
+                            <h2>Execute a raw SQL query - useful only for updates/deletes
+DO NOT USE WITH USER INPUT! THIS DOES NO CHECKING OR ESCAPING OF SQL! DO NOT
+USE NON-STANDARD SQL-92 QUERIES IN THIS METHOD!</h2>
+                            <pre>execute($rawSql) : \s3c3\core\db\number</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$rawSql</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>\s3c3\core\db\number</code><p><p>of affected rows</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_buildSearchClause"></a>
+                        <div class="element clickable method public method_buildSearchClause" data-toggle="collapse" data-target=".method_buildSearchClause .collapse">
+                            <h2>Build a WHERE clause for a query</h2>
+                            <pre>buildSearchClause($args, $values = array()) : string</pre>
+                            <div class="labels">
+                                                                <span class="label">static</span>                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$values</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p><p>search clause</p>
+</p>
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                                            <h3><i class="icon-custom icon-constant"></i> Constants</h3>
+                                                    <a id="constant_EQ"> </a>
+                            <div class="element clickable constant  constant_EQ" data-toggle="collapse" data-target=".constant_EQ .collapse">
+                                <h2>For building searches with EQUAL (=)</h2>
+                                <pre>EQ</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>EQ</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_NE"> </a>
+                            <div class="element clickable constant  constant_NE" data-toggle="collapse" data-target=".constant_NE .collapse">
+                                <h2>For building searches with NOT EQUAL (!=)</h2>
+                                <pre>NE</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>NE</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_LT"> </a>
+                            <div class="element clickable constant  constant_LT" data-toggle="collapse" data-target=".constant_LT .collapse">
+                                <h2>For building searches with LESS THAN (&lt;)</h2>
+                                <pre>LT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>LT</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_LTE"> </a>
+                            <div class="element clickable constant  constant_LTE" data-toggle="collapse" data-target=".constant_LTE .collapse">
+                                <h2>For building searches with LESS THAN OR EQUAL (&lt;=)</h2>
+                                <pre>LTE</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>LTE</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_GT"> </a>
+                            <div class="element clickable constant  constant_GT" data-toggle="collapse" data-target=".constant_GT .collapse">
+                                <h2>For building searches with GREATER THAN (&gt;)</h2>
+                                <pre>GT</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>GT</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_GTE"> </a>
+                            <div class="element clickable constant  constant_GTE" data-toggle="collapse" data-target=".constant_GTE .collapse">
+                                <h2>For building searches with GREATER THAN OR EQUAL (&gt;=)</h2>
+                                <pre>GTE</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>GTE</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_BTW"> </a>
+                            <div class="element clickable constant  constant_BTW" data-toggle="collapse" data-target=".constant_BTW .collapse">
+                                <h2>For building searches with BETWEEN (BETWEEN ? AND ?)</h2>
+                                <pre>BTW</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>BTW</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_IN"> </a>
+                            <div class="element clickable constant  constant_IN" data-toggle="collapse" data-target=".constant_IN .collapse">
+                                <h2>For building searches with IN</h2>
+                                <pre>IN</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>IN</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_NIN"> </a>
+                            <div class="element clickable constant  constant_NIN" data-toggle="collapse" data-target=".constant_NIN .collapse">
+                                <h2>For building searches with NOT IN</h2>
+                                <pre>NIN</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>NIN</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_NUL"> </a>
+                            <div class="element clickable constant  constant_NUL" data-toggle="collapse" data-target=".constant_NUL .collapse">
+                                <h2>For building searches with IS NULL</h2>
+                                <pre>NUL</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>NUL</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_NNUL"> </a>
+                            <div class="element clickable constant  constant_NNUL" data-toggle="collapse" data-target=".constant_NNUL .collapse">
+                                <h2>For building searches with IS NOT NULL</h2>
+                                <pre>NNUL</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>NNUL</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_LIKE"> </a>
+                            <div class="element clickable constant  constant_LIKE" data-toggle="collapse" data-target=".constant_LIKE .collapse">
+                                <h2>For building searches with LIKE</h2>
+                                <pre>LIKE</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>LIKE</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="constant_NLIKE"> </a>
+                            <div class="element clickable constant  constant_NLIKE" data-toggle="collapse" data-target=".constant_NLIKE .collapse">
+                                <h2>For building searches with NOT LIKE</h2>
+                                <pre>NLIKE</pre>
+                                <div class="labels">
+                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        constant
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>NLIKE</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                            
+                                                                <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property_instance"> </a>
+                            <div class="element clickable property private property_instance" data-toggle="collapse" data-target=".property_instance .collapse">
+                                <h2>Database object</h2>
+                                <pre>instance</pre>
+                                <div class="labels">
+                                                                        <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <a id="property_prefix"> </a>
+                            <div class="element clickable property private property_prefix" data-toggle="collapse" data-target=".property_prefix .collapse">
+                                <h2>string prefix</h2>
+                                <pre>prefix</pre>
+                                <div class="labels">
+                                                                        <span class="label">static</span>                                </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        access
+                                                    </th>
+                                                    <td>
+                                                                                                                    <p>private</p>
+
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\s3c3\core\db\Database"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/s3c3.core.db.html">db</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/s3c3.core.db.Database.html">Database</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Fri, 02 Aug 2013 00:42:16 +0000.<br/>
+    </footer>
+    </body>
+</html>
