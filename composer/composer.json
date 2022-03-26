@@ -30,7 +30,7 @@
         "evardsson/ansi-php": ">=0.9",
         "phpdocumentor/reflection-docblock": "dev-master",
         "monolog/monolog": ">=1.2.1",
-        "phpunit/phpunit": ">=3.7.10",
+        "phpunit/phpunit": "4.8.28",
         "symfony/yaml": ">=2.1.0",
         "phpseclib/phpseclib": ">=0.3.5"
     },
